@@ -1,0 +1,20 @@
+.logo{
+    font-size: 22px;
+    margin-left: 20px;
+}
+.head{
+    position: relative !important;;
+}
+.nav-gral{
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    color: #000;
+   font-weight: 700;
+}
+.btn-nav{
+    font-family: inherit !important;
+}
+span{
+    font-family: inherit !important;
+}
