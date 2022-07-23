@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Container from './components/Container/Container';
 import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         </a>
       </header> */}
       <NavBar></NavBar>
+      <ItemListContainer titulo={"Productos"}/>
       <Container></Container>
     </div>
   );

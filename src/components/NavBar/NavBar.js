@@ -13,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import CardWidget from '../CardWidget/CardWidget';
 import './NavBar.css'
 
 const drawerWidth = 240;
@@ -66,6 +67,7 @@ function NavBar(props){
               </Button>
             ))}
           </Box>
+          <CardWidget></CardWidget>
         </Toolbar>
       </AppBar>
       <Box component="nav">
