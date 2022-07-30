@@ -1,0 +1,30 @@
+.buy_item{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 2.5%;
+}
+.count_item{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    background-color: rgb(4, 1, 31);
+    color: #fff;
+    font-weight: 600;
+    justify-content: space-around;
+    margin-bottom: 5%;
+    border-radius: 10px;
+}
+.simbolosCount{
+    color: #fff !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+.btn-add{
+    color: #000 !important;
+    border: 1px solid !important;
+    text-transform: capitalize !important;
+    font-family: unset !important;
+    font-weight: 600 !important;
+    box-shadow: 5px 5px 15px #958d8d;
+}
