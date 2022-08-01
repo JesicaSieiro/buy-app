@@ -1,9 +1,9 @@
-.buy_item{
+/* .buy_item{
     display: flex;
     flex-direction: column;
     width: 20%;
     padding: 2.5%;
-}
+} */
 .count_item{
     display: flex;
     flex-direction: row;
@@ -27,4 +27,5 @@
     font-family: unset !important;
     font-weight: 600 !important;
     box-shadow: 5px 5px 15px #958d8d;
+    width: -webkit-fill-available;
 }

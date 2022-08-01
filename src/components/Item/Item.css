@@ -1,0 +1,10 @@
+.buy_item{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    padding: 2.5%;
+    box-shadow: 5px 5px 15px #958d8d;
+    border: 1px solid !important;
+    border-radius: 10px;
+    margin-bottom: 5%;
+}

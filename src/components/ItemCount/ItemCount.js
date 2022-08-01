@@ -11,9 +11,9 @@ function ItemCount({stock, initial}){
         setCantidad(cantidad-1)
     }
     return(
-        <div className="buy_item">
+        <div >
             <div className="count_item">
-                <Button  onClick={removeCount} disabled={cantidad==0} className="simbolosCount">-</Button>
+                <Button  onClick={removeCount} disabled={cantidad==1} className="simbolosCount">-</Button>
                 <p>{cantidad}</p>
                 <Button onClick={addCount} disabled={cantidad==stock} className="simbolosCount">+</Button>
             </div>
