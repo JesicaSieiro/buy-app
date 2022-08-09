@@ -10,8 +10,8 @@ import { useState , useContext } from 'react';
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
-  maxWidth: '100%',
-  maxHeight: '100%',
+ /*  maxWidth: '100%',
+  maxHeight: '100%', */
 });
 
 
@@ -20,11 +20,11 @@ function ItemDetail({titulo, price, imagen}){
     return(
         <div>
             
-        <Grid container spacing={2}>
-           {/*  <Grid item xs={8}>
-                <Img alt="complex" src={`../${data.imagen}`} />
-            </Grid> */}
-            <Grid item xs={4} >
+        <Grid container spacing={2} className="container_detail">
+            <Grid item xs={4}>
+                <Img alt="complex" src={`../${imagen}`}  className="img_detail"/>
+            </Grid>
+            <Grid item xs={4} className="txt_detail" >
                 
                    <h2>{titulo}</h2> 
             

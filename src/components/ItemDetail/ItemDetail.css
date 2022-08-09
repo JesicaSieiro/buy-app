@@ -1,0 +1,15 @@
+.container_detail{
+    display: flex;
+    justify-content: start;
+    margin: 5% 10% !important;
+}
+.img_detail{
+   height: 400px;
+    border: 1px solid;
+    border-radius: 10px;
+    /* margin: 4% !important; */
+    box-shadow: 5px 5px 15px #958d8d;
+}
+.txt_detail{
+    margin: 5% 0 !important;
+}
