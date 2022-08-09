@@ -8,3 +8,17 @@
     border-radius: 10px;
     margin-bottom: 5%;
 }
+.btn_detail{
+    color: #000 !important;
+    border: none !important;
+    text-transform: capitalize !important;
+    font-family: unset !important;
+    font-weight: 600 !important;
+    /* box-shadow: 5px 5px 15px #958d8d; */
+    width: -webkit-fill-available;
+    /* border-radius: 40% !important; */
+    text-decoration: underline !important;
+    /* padding-bottom: 5% !important; */
+    font-weight: 700 !important;
+    margin-bottom: inherit;
+}

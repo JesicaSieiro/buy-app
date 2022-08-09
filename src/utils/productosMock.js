@@ -14,7 +14,7 @@ const backendProducts=[
     {id:11, title:'Escandalosos larga', price:3000, imagen:'images/remeras/remera5.jpg', category: 'remera', stock:20,quantity:0},
     {id:12, title:'Angels cordones', price:3000, imagen:'images/remeras/remera6.jpg', category: 'remera', stock:7,quantity:0}
 ]
-const getFetch= new Promise((res,rej)=>{
+ const getFetch= new Promise((res,rej)=>{
     let condition=true;
     if(condition){
         setTimeout(()=>{
@@ -25,4 +25,21 @@ const getFetch= new Promise((res,rej)=>{
         rej(console.log("Hubo un error con los datos"))
     }
 });
+export const getProductsByCategory=(categoryId)=>{
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
+            res(backendProducts.filter(prod=>prod.category===categoryId))
+        },500)
+       })
+}
+ export const getItem=(id)=>{
+    return new Promise((res,rej)=>{
+     setTimeout(()=>{
+         res(backendProducts.find(prod=>prod.id===id))
+     },500)
+    })
+ }
+
 export default getFetch
+/* export {getItem}
+export{getProductsByCategory} */

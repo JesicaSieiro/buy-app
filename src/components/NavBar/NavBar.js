@@ -15,9 +15,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CardWidget from '../CardWidget/CardWidget';
 import './NavBar.css'
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+/* const navItems = ['Home', 'About', 'Contact']; */
+const navItems = [
+  <Link to="/" className="btn-nav">Home</Link>, <Link to='category/buzo' className="btn-nav">Buzos</Link>, <Link className="btn-nav" to='category/remera'>Remeras</Link>];
 
 
 function NavBar(props){
@@ -33,13 +36,17 @@ function NavBar(props){
       <h3 className="logo">Buy</h3>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+        {/* {navItems.map((item) => (
+           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }} >
               <ListItemText primary={item} className="btn-nav"/>
             </ListItemButton>
-          </ListItem>
-        ))}
+          </ListItem> 
+          
+        ))} */}
+        <Link to="/" className="btn-nav">Home</Link>
+        <Link to='category/buzo' className="btn-nav">Buzos</Link>
+        <Link className="btn-nav" to='category/remera'>Remeras</Link>
       </List>
     </Box>
   );

@@ -8,7 +8,7 @@ function ItemList({products}){
         <div className='list-cards'>
             {products.map(product=>
                 
-                <Item key={product.id} title={product.title} price={product.price} imagen={product.imagen} stock={product.stock}></Item>
+                <Item key={product.id} id={product.id} title={product.title} price={product.price} imagen={product.imagen} stock={product.stock}></Item>
             )}
             
             
