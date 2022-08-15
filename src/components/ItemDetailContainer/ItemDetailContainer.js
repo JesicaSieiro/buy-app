@@ -19,7 +19,8 @@ function  ItemDetailContainer(){
     
     return(
         <div>
-            <ItemDetail titulo={product.title} imagen={product.imagen} price={product.price}></ItemDetail>
+            {/* <ItemDetail titulo={product.title} imagen={product.imagen} price={product.price} ></ItemDetail> */}
+            <ItemDetail producto={{...product}}></ItemDetail>
         </div>
     )
 }

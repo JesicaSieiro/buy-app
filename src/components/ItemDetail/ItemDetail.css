@@ -13,3 +13,12 @@
 .txt_detail{
     margin: 5% 0 !important;
 }
+.btn-buy{
+    color: #000 !important;
+    border: 1px solid !important;
+    text-transform: capitalize !important;
+    font-family: unset !important;
+    font-weight: 600 !important;
+    box-shadow: 5px 5px 15px #958d8d;
+    width: -webkit-fill-available;
+}
