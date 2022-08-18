@@ -2,18 +2,19 @@ import Button from '@mui/material/Button';
 import './ItemCount.css'
 import { useState  } from 'react';
 
-function ItemCount({producto, initial, setShowButton,onAdd}){
+function ItemCount({producto, initial, setShowButton,onItemToAdd}){
     const [cantidad, setCantidad]=useState(initial)
     
     const addCount=()=>{
        setCantidad(cantidad+1)
-       producto.quantity=cantidad;
     }
     const removeCount=()=>{
        setCantidad(cantidad-1)
-       producto.quantity=cantidad;
     }
-    
+    const onAdd=()=>{
+        producto.quantity=cantidad;
+        onItemToAdd(producto)
+    }
     
     return(
         <div >
