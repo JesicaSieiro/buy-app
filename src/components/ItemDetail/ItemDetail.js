@@ -16,7 +16,7 @@ const Img = styled('img')({
 
 
 function ItemDetail({producto}){
-    const {addItemToCart}=useContext(CartContext)
+    const {addItemToCart,handleTotalPrice,cart}=useContext(CartContext)
     const[showButton, setShowButton]=useState(false);
     /* const[cantidad, setCantidad]=useState(0); */
     const onAdd=(producto)=>{
@@ -39,7 +39,7 @@ function ItemDetail({producto}){
                    {!showButton?
                    <ItemCount initial={1}  producto={producto} setShowButton={setShowButton} onItemToAdd={onAdd}></ItemCount>
                   :
-                   <Button variant="outlined" className='btn-buy'><Link  to='/cart'>Terminar compra</Link></Button> }
+                   <Button variant="outlined" onClick={()=>handleTotalPrice(cart)} className='btn-buy'><Link  to='/cart'>Terminar compra</Link></Button> }
                    
             </Grid>
         

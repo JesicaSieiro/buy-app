@@ -1,14 +1,16 @@
 import './Item.css';
 import ItemCount from "../ItemCount/ItemCount"
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { useState , useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { CartContext } from '../../context/CartContext';
 function Item({ producto }){
     const[showButton, setShowButton]=useState(false);
+    const {addItemToCart,handleTotalPrice,cart}=useContext(CartContext)
     const onAdd=(producto)=>{
         console.log("datos del producto:",producto);
         console.log("Cantidad Comprada:",producto.quantity);
+        addItemToCart(producto)
     }
     return(
         <div className='buy_item'>
@@ -20,9 +22,9 @@ function Item({ producto }){
             </Link>
             
             {!showButton?
-                   <ItemCount initial={1}  producto={producto} setShowButton={setShowButton} onAdd={onAdd}></ItemCount>
+                   <ItemCount initial={1}  producto={producto} setShowButton={setShowButton} onItemToAdd={onAdd}></ItemCount>
                   :
-                   <Button variant="outlined" className='btn-buy'><Link  to='/cart'>Terminar compra</Link></Button> }
+                  <Button variant="outlined"  className='btn-buy'><Link  to='/cart'>Terminar compra</Link></Button> }
         </div>
     )
 }

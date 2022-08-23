@@ -30,7 +30,7 @@ function ItemListContainer({titulo}){
         <div>
             <h3>{titulo}</h3>
            {/*  <ItemCount stock={5} initial={1}></ItemCount> */}
-           <ItemList products={ products}></ItemList>
+           <ItemList products={products}></ItemList>
         </div>
 
         
