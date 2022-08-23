@@ -24,7 +24,7 @@ function Item({ producto }){
             {!showButton?
                    <ItemCount initial={1}  producto={producto} setShowButton={setShowButton} onItemToAdd={onAdd}></ItemCount>
                   :
-                  <Button variant="outlined"  className='btn-buy'><Link  to='/cart'>Terminar compra</Link></Button> }
+                  <Button variant="outlined" onClick={()=>handleTotalPrice(cart)} className='btn-buy'><Link  to='/cart'>Terminar compra</Link></Button> }
         </div>
     )
 }

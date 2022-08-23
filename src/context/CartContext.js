@@ -11,9 +11,9 @@ export default function CartCustomContext({children}) {
 
     const handleTotalPrice=(listaProds)=>{
         if(listaProds.length===1){
-            setPrecioTotal(listaProds[0].price)
+            setPrecioTotal(listaProds[0].price*listaProds[0].quantity)
         }else{
-            setPrecioTotal( listaProds.reduce((acc,prod) => acc.price + prod.price))
+            setPrecioTotal( listaProds.reduce((acc,prod) => acc.price*acc.quantity + prod.price*prod.quantity))
         }
         console.log("PRECIO TOTAL:",precioTotal)
     }
@@ -23,41 +23,22 @@ export default function CartCustomContext({children}) {
         handleTotalPrice(productsFiltered);
     }
     const addItemToCart=(producto)=>{
-        /* setCart([...cart,producto]) */
-        /* if(cart.length===0){
-            setCart([{...producto, price: producto.price*producto.quantity}])
+        if(cart.length===0){
+            setCart([producto])
         }else{
             const isInCart=cart.find(item=>item.id==producto.id)
             if(!isInCart){
-                setCart([...cart, {...producto, price: producto.price*producto.quantity}])
+                setCart([...cart, producto])
             }else{
                 isInCart.quantity=producto.quantity+isInCart.quantity;
-                isInCart.price= isInCart.price*isInCart.quantity;
-                setCart([...cart,isInCart])
+                setCart([...cart])
                
             }
-        } */
+        }
      
        
 
-        const listaActualizada = cart.find(
-            (itemEnCarrito) => itemEnCarrito.id === producto.id
-                )?cart.map((itemEnCarrito) => {
-                    if (itemEnCarrito.id === producto.id) {
-                        return {
-                            ...itemEnCarrito,
-                            quantity: itemEnCarrito.quantity + producto.quantity,
-                            price: itemEnCarrito.price*itemEnCarrito.quantity
-                        };
-                   
-                    }
-                    return itemEnCarrito;
-                })
-            : [...cart, {...producto, price: producto.price*producto.quantity}];
-        setCart(listaActualizada);
-        handleTotalPrice(listaActualizada)
-        /* console.log(">> elementos del carrito actualmente: ", listaActualizada); */
-        /* handleTotalPrice(cart) */
+       
         console.log(">> elementos del carrito actualmente: ", cart);
         console.log("elementos=>",cart.length)
         console.log("elementos=>",cart)
