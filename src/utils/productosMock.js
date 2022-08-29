@@ -98,7 +98,8 @@ export const getProductsByCategory=(categoryId)=>{
     const newOrder= collection(DB,'orders')
     const orderDoc = await addDoc(newOrder, order)
     console.log("orden generada: ", orderDoc.id)
-    return newOrder
+    const orderCreated={id: orderDoc.id, newOrder};
+    return orderCreated
 }
 export async function setQuantityOrder (listCart){
     listCart.forEach(async(item)=>{

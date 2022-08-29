@@ -19,6 +19,7 @@ export default function CartCustomContext({children}) {
     }
     const removeList=()=>{
         setCart([]);
+        setPrecioTotal(0)
     }
     const removeProduct=(prod)=>{
         const productsFiltered = cart.filter((item) => item.id !==prod.id)

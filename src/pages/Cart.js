@@ -5,10 +5,27 @@ import {CartContext} from "../context/CartContext"
 import {Link} from  'react-router-dom';
 import {createOrderDB,setQuantityOrder}  from "../utils/productosMock";
 import {serverTimestamp}from 'firebase/firestore'
+import Swal from 'sweetalert2'
 import "./Cart.css"
+
+
 function Cart(){
     const{cart,precioTotal,removeProduct, removeList}=useContext(CartContext);
     console.log("cart list desde Checkout", cart)
+    const mostrarConfirmacion=(id)=>{
+        Swal.fire({
+            title: 'Su compra se relizo con exito!',
+            html:`<p><b>Identificardor de compra:</b></p>
+            <p><b>${id}</b></p>`,
+            icon: 'success',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
     function createOrder(){
         const itemDB=cart.map(
             item=>({
@@ -29,7 +46,9 @@ function Cart(){
         }
         createOrderDB(order)
         .then(res=>{
-            alert("Su orden fue creada correctamente!",res.id)
+           /*  alert("Su orden fue creada correctamente!",res.id) */
+            console.log("resultado de orden>>",res)
+            mostrarConfirmacion(res.id)
             setQuantityOrder(cart)
             removeList()
         })
@@ -38,8 +57,8 @@ function Cart(){
         
     }
     return(
-        <Container className='container-general'> 
         
+        <Container className='container-general'> 
         <h2>Checkout: </h2>
         <div className='cart-section'>
             <div className='col-cart-table__head'>
