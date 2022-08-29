@@ -3,10 +3,40 @@ import { Container, Button } from "@mui/material"
 import { Delete } from "@mui/icons-material"
 import {CartContext} from "../context/CartContext"
 import {Link} from  'react-router-dom';
+import {createOrderDB,setQuantityOrder}  from "../utils/productosMock";
+import {serverTimestamp}from 'firebase/firestore'
 import "./Cart.css"
 function Cart(){
-    const{cart,precioTotal,removeProduct}=useContext(CartContext);
+    const{cart,precioTotal,removeProduct, removeList}=useContext(CartContext);
     console.log("cart list desde Checkout", cart)
+    function createOrder(){
+        const itemDB=cart.map(
+            item=>({
+                id:item.id,
+                title:item.title,
+                price:item.price
+            })
+        )
+        let order={
+            buyer:{
+                name:"Julian Sotomayor",
+                phone:"1121742925",
+                email:"julian.sotomayor@gmail.com"
+            },
+            date:serverTimestamp(),
+            items:itemDB,
+            totalPrice:precioTotal
+        }
+        createOrderDB(order)
+        .then(res=>{
+            alert("Su orden fue creada correctamente!",res.id)
+            setQuantityOrder(cart)
+            removeList()
+        })
+        .catch(err=>{alert("Su orden no pudo der creada, por favor intente nuevamente",err)})
+        console.log("ORDEN DE COMPRA: ",order)
+        
+    }
     return(
         <Container className='container-general'> 
         
@@ -54,7 +84,7 @@ function Cart(){
                         <p>Total</p>
                         <span>$  {precioTotal}</span>
                     </div>
-                    <Button className='btn-custom' >Completar Compra</Button>
+                    <Button onClick={createOrder} className='btn-custom' >Completar Compra</Button>
                 </div>
             </div>
         </div>

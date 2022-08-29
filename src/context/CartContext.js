@@ -17,6 +17,9 @@ export default function CartCustomContext({children}) {
         }
         console.log("PRECIO TOTAL:",precioTotal)
     }
+    const removeList=()=>{
+        setCart([]);
+    }
     const removeProduct=(prod)=>{
         const productsFiltered = cart.filter((item) => item.id !==prod.id)
         setCart(productsFiltered);
@@ -47,7 +50,7 @@ export default function CartCustomContext({children}) {
     }
    
   return (
-    <CartContext.Provider value={{addItemToCart,cart,precioTotal,removeProduct, handleTotalPrice}}>
+    <CartContext.Provider value={{addItemToCart,cart,precioTotal,removeProduct, handleTotalPrice, removeList}}>
         {children}
     </CartContext.Provider>
   )

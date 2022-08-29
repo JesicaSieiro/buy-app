@@ -1,6 +1,7 @@
 
 import { DB } from "./AppFirebase";
-import {collection, getDocs, getDoc, doc, query, where}from 'firebase/firestore'
+import {collection, getDocs, getDoc, doc, query, where, increment, addDoc, updateDoc}from 'firebase/firestore'
+import { async } from "@firebase/util";
 //lista de productos
 const backendProducts=[
     {id:"1", title:'Buzo corto', price:3500, imagen:'images/buzos/buzo.jpg',category: 'buzo', stock:7 ,quantity:0},
@@ -93,6 +94,33 @@ export const getProductsByCategory=(categoryId)=>{
     })
  }
 
+ export async function createOrderDB (order){
+    const newOrder= collection(DB,'orders')
+    const orderDoc = await addDoc(newOrder, order)
+    console.log("orden generada: ", orderDoc.id)
+    return newOrder
+}
+export async function setQuantityOrder (listCart){
+    listCart.forEach(async(item)=>{
+        const itemRef = doc(DB, 'productos', item.id);
+        await updateDoc(itemRef, {
+            stock: increment(-item.quantity)
+        })
+    })
+}
+/* export const createOrderDB=async(order)=>{
+    const newOrder= collection(DB,'orders')
+    const orderDoc = await setDoc(newOrder, order)
+    console.log("orden generada: ", orderDoc.id)
+    return newOrder
+} */
+/* const saveData = async (newOrder) => {
+    const orderFirebase = collection(db, 'ordenes')
+    const orderDoc = await addDoc(orderFirebase, newOrder)
+    console.log("orden generada: ", orderDoc.id)
+    setSuccess(orderDoc.id)
+    cleanCartProducts()
+} */
 export default getFetch
 /* export {getItem}
 export{getProductsByCategory} */
