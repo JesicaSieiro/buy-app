@@ -3,12 +3,13 @@ export const CartContext=React.createContext();
 
 
 export default function CartCustomContext({children}) {
-    const isInCart=(producto)=>{
-        return cart.find((prod)=>prod.id===producto.id)?true:false;
-    }
+
     const [cart, setCart]=useState([])
     const[precioTotal, setPrecioTotal]=useState(0);
 
+    const isInCart=(producto)=>{
+        return cart.find((prod)=>prod.id===producto.id)?true:false;
+    }
     const handleTotalPrice=(listaProds)=>{
         if(listaProds.length===1){
             setPrecioTotal(listaProds[0].price*listaProds[0].quantity)

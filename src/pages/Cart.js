@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { Container, Button } from "@mui/material"
 import { Delete } from "@mui/icons-material"
 import {CartContext} from "../context/CartContext"
@@ -9,9 +9,11 @@ import Swal from 'sweetalert2'
 import "./Cart.css"
 
 
+
 function Cart(){
     const{cart,precioTotal,removeProduct, removeList}=useContext(CartContext);
-    console.log("cart list desde Checkout", cart)
+    
+
     const mostrarConfirmacion=(id)=>{
         Swal.fire({
             title: 'Su compra se relizo con exito!',
@@ -26,7 +28,27 @@ function Cart(){
             }
           })
     }
-    function createOrder(){
+    const modalForm=async()=>{
+       
+         const { value: formValues } = await Swal.fire({
+            title: 'Complete sus datos personales',
+            html:
+              '<input type="text" id="name" class="swal2-input" placeholder="Nombre y apellido">' +
+              '<input type="phone" id="phone" class="swal2-input" placeholder="Telefono">'+
+              '<input type="email" id="email" class="swal2-input" placeholder="Email">',
+            preConfirm: () => {
+              
+              return({name:  document.getElementById('name').value,
+              phone: document.getElementById('phone').value,
+              email: document.getElementById('email').value})
+            }
+          
+        })
+            if (formValues) {
+                createOrder(formValues)
+              }  
+    }
+    function createOrder(resultBuyer){
         const itemDB=cart.map(
             item=>({
                 id:item.id,
@@ -34,26 +56,25 @@ function Cart(){
                 price:item.price
             })
         )
-        let order={
-            buyer:{
-                name:"Julian Sotomayor",
-                phone:"1121742925",
-                email:"julian.sotomayor@gmail.com"
-            },
-            date:serverTimestamp(),
-            items:itemDB,
-            totalPrice:precioTotal
-        }
-        createOrderDB(order)
-        .then(res=>{
-           /*  alert("Su orden fue creada correctamente!",res.id) */
-            console.log("resultado de orden>>",res)
-            mostrarConfirmacion(res.id)
-            setQuantityOrder(cart)
-            removeList()
-        })
-        .catch(err=>{alert("Su orden no pudo der creada, por favor intente nuevamente",err)})
-        console.log("ORDEN DE COMPRA: ",order)
+
+                if(resultBuyer){
+                    let order={
+                        buyer:resultBuyer,
+                        date:serverTimestamp(),
+                        items:itemDB,
+                        totalPrice:precioTotal
+                    }
+                    createOrderDB(order)
+                    .then(res=>{
+                        mostrarConfirmacion(res.id)
+                        setQuantityOrder(cart)
+                        removeList()
+                    })
+                    .catch(err=>{alert("Su orden no pudo der creada, por favor intente nuevamente",err)})
+                    console.log("ORDEN DE COMPRA: ",order)
+                }
+           
+        
         
     }
     return(
@@ -103,7 +124,7 @@ function Cart(){
                         <p>Total</p>
                         <span>$  {precioTotal}</span>
                     </div>
-                    <Button onClick={createOrder} className='btn-custom' >Completar Compra</Button>
+                    <Button onClick={modalForm} className='btn-custom' >Completar Compra</Button>
                 </div>
             </div>
         </div>
