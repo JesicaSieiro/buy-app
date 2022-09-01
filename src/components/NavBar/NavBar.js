@@ -11,14 +11,12 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CardWidget from '../CardWidget/CardWidget';
 import './NavBar.css'
 import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
-/* const navItems = ['Home', 'About', 'Contact']; */
 const navItems = [
   <Link to="/" className="btn-nav">Home</Link>, <Link to='category/buzo' className="btn-nav">Buzos</Link>, <Link className="btn-nav" to='category/remera'>Remeras</Link>];
 
@@ -33,20 +31,12 @@ function NavBar(props){
 
   const drawer = (
     <Box onClick={handleDrawerToggle} >
-      <h3 className="logo">Buy</h3>
+      <Link to="/" className="btn-nav"><h3 className="logo">Buy</h3></Link>
       <Divider />
       <List>
-        {/* {navItems.map((item) => (
-           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} >
-              <ListItemText primary={item} className="btn-nav"/>
-            </ListItemButton>
-          </ListItem> 
-          
-        ))} */}
-        <Link to="/" className="btn-nav">Home</Link>
-        <Link to='category/buzo' className="btn-nav">Buzos</Link>
-        <Link className="btn-nav" to='category/remera'>Remeras</Link>
+        <Link to="/" className="btn-nav btn-nav-mobile">Home</Link>
+        <Link to='category/buzo' className="btn-nav btn-nav-mobile">Buzos</Link>
+        <Link className="btn-nav btn-nav-mobile" to='category/remera'>Remeras</Link>
       </List>
     </Box>
   );
@@ -66,7 +56,7 @@ function NavBar(props){
           >
             <MenuIcon />
           </IconButton>
-          <h3 className="logo">Buy</h3>
+          <Link to="/" className="btn-nav"><h3 className="logo">Buy</h3></Link>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: '#000' }} className="btn-nav"> 
@@ -84,7 +74,7 @@ function NavBar(props){
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },

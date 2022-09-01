@@ -21,3 +21,12 @@
 span{
     font-family: inherit !important;
 }
+.btn-nav-mobile{
+    display: block;
+    margin: auto;
+    width: -moz-fit-content;
+    /* width: fit-content; */
+    padding: 2%;
+    border-bottom: 0.5px solid #ddd9d9;
+    text-align: center;
+}

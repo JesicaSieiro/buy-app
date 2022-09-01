@@ -12,8 +12,14 @@ function ItemCount({producto, initial, setShowButton,onItemToAdd}){
        setCantidad(cantidad-1)
     }
     const onAdd=()=>{
-        producto.quantity=cantidad;
-        onItemToAdd(producto)
+        if(producto.stock-cantidad<0){
+            alert("No se puede comprar esa cantidad de productos.")
+        }
+        else{
+            producto.quantity=cantidad;
+            onItemToAdd(producto)
+            setShowButton(true)
+        }
     }
     
     return(
@@ -23,7 +29,7 @@ function ItemCount({producto, initial, setShowButton,onItemToAdd}){
                 <p>{cantidad}</p>
                 <Button onClick={addCount} disabled={cantidad==producto.stock} className="simbolosCount">+</Button>
             </div>
-            <Button variant="outlined" onClick={()=>{setShowButton(true);onAdd(producto)}}  className="btn-add" >Agregar al carrito</Button>
+            <Button variant="outlined" onClick={()=>{onAdd(producto)}}  className="btn-add" >Agregar al carrito</Button>
            
         
         </div>

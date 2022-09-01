@@ -11,11 +11,13 @@ function Item({ producto }){
         console.log("datos del producto:",producto);
         console.log("Cantidad Comprada:",producto.quantity);
         addItemToCart(producto)
+       
     }
     return(
         <div className='buy_item'>
            <img src={`../${producto.imagen}`} />
             <h4>{producto.title}</h4>
+            <p>Cantidad disponible  : {producto.stock}</p>
             <p>${producto.price}</p>
             <Link to={`/detail/${producto.id}`}>
              <Button variant="outlined" className="btn_detail"  >Detalle</Button>

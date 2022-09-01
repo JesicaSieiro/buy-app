@@ -71,7 +71,7 @@ function Cart(){
                         removeList()
                     })
                     .catch(err=>{alert("Su orden no pudo der creada, por favor intente nuevamente",err)})
-                    console.log("ORDEN DE COMPRA: ",order)
+                    
                 }
            
         

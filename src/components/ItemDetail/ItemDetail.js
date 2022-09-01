@@ -23,6 +23,7 @@ function ItemDetail({producto}){
         console.log("datos del producto:",producto);
         console.log("Cantidad Comprada:",producto.quantity);
         addItemToCart(producto)
+       
     }
     return(
         <div>
@@ -34,7 +35,8 @@ function ItemDetail({producto}){
             <Grid item xs={4} className="txt_detail" >
                 
                    <h2>{producto.title}</h2> 
-            
+                   <p>{producto.description}</p>
+                    <p>Cantidad disponible : {producto.stock}</p>
                    <h3>${producto.price}</h3> 
                    {!showButton?
                    <ItemCount initial={1}  producto={producto} setShowButton={setShowButton} onItemToAdd={onAdd}></ItemCount>

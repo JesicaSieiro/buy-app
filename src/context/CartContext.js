@@ -7,11 +7,11 @@ export default function CartCustomContext({children}) {
     const [cart, setCart]=useState([])
     const[precioTotal, setPrecioTotal]=useState(0);
 
-    const isInCart=(producto)=>{
-        return cart.find((prod)=>prod.id===producto.id)?true:false;
-    }
     const handleTotalPrice=(listaProds)=>{
-        if(listaProds.length===1){
+        if(listaProds.length===0){
+            setPrecioTotal(0)
+        }
+        else if(listaProds.length===1){
             setPrecioTotal(listaProds[0].price*listaProds[0].quantity)
         }else{
             setPrecioTotal( listaProds.reduce((acc,prod) => acc.price*acc.quantity + prod.price*prod.quantity))
@@ -40,15 +40,7 @@ export default function CartCustomContext({children}) {
                
             }
         }
-     
-       
-
-       
-        console.log(">> elementos del carrito actualmente: ", cart);
-        console.log("elementos=>",cart.length)
-        console.log("elementos=>",cart)
-        console.log("PRECIO TOTAL:",precioTotal)
-       
+        
     }
    
   return (
