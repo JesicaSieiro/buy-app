@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 import './ItemCount.css'
 import { useState  } from 'react';
+import Swal from 'sweetalert2'
 
 function ItemCount({producto, initial, setShowButton,onItemToAdd}){
     const [cantidad, setCantidad]=useState(initial)
@@ -13,7 +14,17 @@ function ItemCount({producto, initial, setShowButton,onItemToAdd}){
     }
     const onAdd=()=>{
         if(producto.stock-cantidad<0){
-            alert("No se puede comprar esa cantidad de productos.")
+            Swal.fire({
+                title: "No se puede comprar esa cantidad de productos.",
+                text:"Por favor intente con una cantidad menor",
+                icon: 'error',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
         }
         else{
             producto.quantity=cantidad;

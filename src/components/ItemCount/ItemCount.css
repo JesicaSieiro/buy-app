@@ -1,9 +1,4 @@
-/* .buy_item{
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    padding: 2.5%;
-} */
+
 .count_item{
     display: flex;
     flex-direction: row;

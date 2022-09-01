@@ -10,15 +10,12 @@ import { CartContext } from '../../context/CartContext';
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
- /*  maxWidth: '100%',
-  maxHeight: '100%', */
 });
 
 
 function ItemDetail({producto}){
     const {addItemToCart,handleTotalPrice,cart}=useContext(CartContext)
     const[showButton, setShowButton]=useState(false);
-    /* const[cantidad, setCantidad]=useState(0); */
     const onAdd=(producto)=>{
         console.log("datos del producto:",producto);
         console.log("Cantidad Comprada:",producto.quantity);

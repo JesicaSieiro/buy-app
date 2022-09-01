@@ -1,9 +1,8 @@
-/* import ItemCount from "../ItemCount/ItemCount" */
+
 import ItemList from "../ItemList/ItemList";
 import { useState, useEffect  } from 'react';
 import getFetch  from "../../utils/productosMock.js";
 import {getProductsByCategory} from "../../utils/productosMock.js"
-/* import getProductsByCategory from "../../utils/productosMock.js"; */
 import {useParams} from "react-router-dom"
 
 function ItemListContainer({titulo}){
@@ -29,7 +28,6 @@ function ItemListContainer({titulo}){
     return(
         <div>
             <h3>{titulo}</h3>
-           {/*  <ItemCount stock={5} initial={1}></ItemCount> */}
            <ItemList products={products}></ItemList>
         </div>
 
