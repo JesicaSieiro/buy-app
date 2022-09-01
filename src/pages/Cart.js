@@ -1,5 +1,6 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { Container, Button } from "@mui/material"
+import CircularProgress from '@mui/material/CircularProgress';
 import { Delete } from "@mui/icons-material"
 import {CartContext} from "../context/CartContext"
 import {Link} from  'react-router-dom';
@@ -12,7 +13,7 @@ import "./Cart.css"
 
 function Cart(){
     const{cart,precioTotal,removeProduct, removeList}=useContext(CartContext);
-    
+    const [loading,setLoading]=useState(false)
 
     const mostrarConfirmacion=(id)=>{
         Swal.fire({
@@ -68,6 +69,8 @@ function Cart(){
               }  
     }
     function createOrder(resultBuyer){
+        
+        setLoading(true)
         const itemDB=cart.map(
             item=>({
                 id:item.id,
@@ -88,8 +91,15 @@ function Cart(){
                         mostrarConfirmacion(res.id)
                         setQuantityOrder(cart)
                         removeList()
+                        setLoading(false)
                     })
-                    .catch(err=>{alert("Su orden no pudo der creada, por favor intente nuevamente",err)})
+                    .catch(
+                        err=>{
+                            setLoading(false)
+                            alert("Su orden no pudo ser creada, por favor intente nuevamente",err)
+                        }
+                    )
+                    
                     
                 }
            
@@ -147,7 +157,7 @@ function Cart(){
                 </div>
             </div>
         </div>
-      
+        {loading && <CircularProgress />}
     </Container>
     )
 }
