@@ -33,15 +33,34 @@ function Cart(){
          const { value: formValues } = await Swal.fire({
             title: 'Complete sus datos personales',
             html:
-              '<input type="text" id="name" class="swal2-input" placeholder="Nombre y apellido">' +
-              '<input type="phone" id="phone" class="swal2-input" placeholder="Telefono">'+
-              '<input type="email" id="email" class="swal2-input" placeholder="Email">',
+              '<input type="text" id="name" class="swal2-input" placeholder="Nombre y apellido" required>' +
+              '<input type="phone" id="phone" class="swal2-input" placeholder="Telefono" required>'+
+              '<input type="email" id="email" class="swal2-input" placeholder="Email" required>',
+           
+              showCancelButton: true,
+            
             preConfirm: () => {
-              
-              return({name:  document.getElementById('name').value,
-              phone: document.getElementById('phone').value,
-              email: document.getElementById('email').value})
-            }
+                let name=  document.getElementById('name').value;
+                let phone= document.getElementById('phone').value;
+                let email= document.getElementById('email').value;
+                let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                if (name==""||phone ==""||email==""||!(emailRegex.test(email))) {
+                    Swal.fire({
+                        title: 'La compra no fue realizada',
+                        text:"Por favor complete los campos correctamente",
+                        icon: 'error',
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      })
+                  }
+                return({name:  document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value})
+                }
           
         })
             if (formValues) {

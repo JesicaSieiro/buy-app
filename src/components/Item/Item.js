@@ -17,7 +17,7 @@ function Item({ producto }){
         <div className='buy_item'>
            <img src={`../${producto.imagen}`} />
             <h4>{producto.title}</h4>
-            <p>Cantidad disponible  : {producto.stock}</p>
+            {/* <p>Cantidad de stock : {producto.stock}</p> */}
             <p>${producto.price}</p>
             <Link to={`/detail/${producto.id}`}>
              <Button variant="outlined" className="btn_detail"  >Detalle</Button>
