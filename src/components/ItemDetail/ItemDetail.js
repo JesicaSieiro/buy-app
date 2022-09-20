@@ -17,8 +17,6 @@ function ItemDetail({producto}){
     const {addItemToCart,handleTotalPrice,cart}=useContext(CartContext)
     const[showButton, setShowButton]=useState(false);
     const onAdd=(producto)=>{
-        console.log("datos del producto:",producto);
-        console.log("Cantidad Comprada:",producto.quantity);
         addItemToCart(producto)
        
     }

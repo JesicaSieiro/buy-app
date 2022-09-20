@@ -10,14 +10,12 @@ function ItemListContainer({titulo}){
     const {categoryId}=useParams()
 
     useEffect(()=>{
-        console.log(products)
         if(!categoryId){
             getFetch.
             then((resp)=>setProducts(resp))
             .catch(err=>console.log(err))
         }
         else{
-            console.log(categoryId)
             getProductsByCategory(categoryId)
             .then(prod=>{setProducts(prod)})
             

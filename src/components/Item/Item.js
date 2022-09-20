@@ -8,8 +8,6 @@ function Item({ producto }){
     const[showButton, setShowButton]=useState(false);
     const {addItemToCart,handleTotalPrice,cart}=useContext(CartContext)
     const onAdd=(producto)=>{
-        console.log("datos del producto:",producto);
-        console.log("Cantidad Comprada:",producto.quantity);
         addItemToCart(producto)
        
     }
@@ -17,7 +15,6 @@ function Item({ producto }){
         <div className='buy_item'>
            <img src={`../${producto.imagen}`} />
             <h4>{producto.title}</h4>
-            {/* <p>Cantidad de stock : {producto.stock}</p> */}
             <p>${producto.price}</p>
             <Link to={`/detail/${producto.id}`}>
              <Button variant="outlined" className="btn_detail"  >Detalle</Button>

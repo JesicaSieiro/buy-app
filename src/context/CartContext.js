@@ -16,7 +16,6 @@ export default function CartCustomContext({children}) {
         }else{
             setPrecioTotal( listaProds.reduce((acc,prod) => acc.price*acc.quantity + prod.price*prod.quantity))
         }
-        console.log("PRECIO TOTAL:",precioTotal)
     }
     const removeList=()=>{
         setCart([]);

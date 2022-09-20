@@ -17,7 +17,6 @@ import {collection, getDocs, getDoc, doc, query, where, increment, addDoc, updat
        return{ id:rawDoc.id, ...rawDoc.data()}
       
       })
-      console.log('Data formateada', productsFormated);
       res(productsFormated)
     },(error)=>{
       rej('error al traer los docs de snapshot', error);
@@ -54,7 +53,7 @@ export const getProductsByCategory=(categoryId)=>{
         // Si existe el doc, podemos utilizar la info de snapshot
         // recordando siempre de usar .data()
         const productFind={id: snapshot.id, ...snapshot.data()};
-        console.log(productFind);
+       
         res(productFind)
         }
         }, error => { rej('error al traer los docs de snapshot', error); });
